@@ -1,10 +1,3 @@
-<?php
-session_start();
-
-include("connection.php");
-include("functions.php");
-$user_data = check_login($con);
-?>
 <!DOCTYPE html>
 <html lang="sl-SI">
     <head>
@@ -32,17 +25,21 @@ $user_data = check_login($con);
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0"  style="color: red;">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php">Domov</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="pozarna_varnost.html">Požarna varnost</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="varnost_in_zdravje.html">Varnost in zdravje pri delu</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="prodaja_gasilnikov.html">Prodaja gasilnikov</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="podpora.html">Podpora</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="registracija.php">Registracija</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="pozarna_varnost.php">Požarna varnost</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="varnost_in_zdravje.php">Varnost in zdravje pri delu</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="prodaja_gasilnikov.php">Prodaja gasilnikov</a></li>
+                        <?php if(!isset($_SESSION['user_id'])) { ?>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="prijava.php">Prijava</a></li>
+                        <?php } ?>
+                        <?php if(isset($_SESSION['user_id'])) { ?>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logout.php">Odjava</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('../Slike/kombi.jpg')">
+        <header class="masthead" style="background-image: url('Slike/kombi.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">

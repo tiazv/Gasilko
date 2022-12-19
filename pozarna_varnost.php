@@ -1,3 +1,4 @@
+<?php include_once("check_login.php") ?>
 <!DOCTYPE html>
 <html lang="sl-SI">
     <head>
@@ -12,6 +13,24 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="styles.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("li").click(function(){
+                    $("p").toggle();
+                });
+            });
+            $(document).ready(function(){
+                $("li").on({
+                    mouseenter: function(){
+                        $(this).css("color", "black");
+                    },
+                    mouseleave: function(){
+                        $(this).css("color", "white");
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <!-- Navigation-->
@@ -25,17 +44,20 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0"  style="color: red;">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php">Domov</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="pozarna_varnost.html">Požarna varnost</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="varnost_in_zdravje.html">Varnost in zdravje pri delu</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="prodaja_gasilnikov.html">Prodaja gasilnikov</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="podpora.html">Podpora</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="registracija.php">Registracija</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="pozarna_varnost.php">Požarna varnost</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="varnost_in_zdravje.php">Varnost in zdravje pri delu</a></li>
+                        <?php if(!isset($_SESSION['user_id'])) { ?>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="prijava.php">Prijava</a></li>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['user_id'])) { ?>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logout.php">Odjava</a></li>
+                            <?php } ?>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('../Slike/kombi.jpg')">
+        <header class="masthead" style="background-image: url('Slike/kombi.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -58,7 +80,7 @@
                     <hr class="my-4" />
                     <ol>
                         <!--prvi-->
-                        <li>Vzdrževanje gasilnikov</li>
+                        <li style="font-size: 1rem;" id="prvi"><u>Vzdrževanje gasilnikov</u></li>
                             <p>Imamo pooblastilo Uprave Republike Slovenije za zaščito in reševanje za vzdrževanje gasilnikov št. 8450-93/2014-15-DGZR.
                             <br>
                             Servis gasilnih aparatov kvalitetno opravljamo v visokotehnološko opremljenih prostorih podjetja, na terenu ali v vaših prostorih, za kar imamo odlično opremljena servisna vozila. Gasilne aparate, ki potrebujejo večji poseg, odpeljemo v prostore podjetja in jih v najkrajšem možnem času vrnemo, v tem času pa vam gasilne aparate nadomestimo z našimi.
@@ -69,46 +91,35 @@
                             </p>
                             <br>
                         <!--drugi-->    
-                        <li>Preizkušanje hidrantnih omrežij z izdajo hidrantnih listov</li>
+                        <li style="font-size: 1rem;"><u>Preizkušanje hidrantnih omrežij z izdajo hidrantnih listov</u></li>
                             <p>Imamo pooblastilo Uprave Republike Slovenije za zaščito in reševanje za preizkus hidrantnih omrežij št. 8450-46/2011-6-DGZR.
                             <br>
                             Pregled in meritev hidrantnega omrežja opravimo z umerjenimi merilnimi napravami, prav tako vzpostavimo Potrdilo o brezhibnem delovanju hidrantnega omrežja in hidrantni list za posamezne hidrante v skladu s Pravilnikom o preizkušanju hidrantnih omrežij (Ur.l. RS, št. 22/95, 102/09 in 60/20).
                             <br>
-                            Meritve hidrantnega omrežja opravljamo:
-                            <ul>
-                                <li> <p> v novozgrajenih objektih; </p> </li>
-                                <li> <p> ob adaptaciji objektov; </p> </li>
-                                <li> <p> redne letne preglede hidrantnega omrežja. </p> </li>
-                            </ul>
+                            Meritve hidrantnega omrežja opravljamo v novozgrajenih objektih, ob adaptaciji objektov in redne letne preglede hidrantnega omrežja.
                             </p>
                             <br>
                         <!--tretji-->
-                        <li>Izobraževanje in usposabljanje s področja požarne varnosti</li>
+                        <li style="font-size: 1rem;"><u>Izobraževanje in usposabljanje s področja požarne varnosti</u></li>
                             <p>Izobraževanje in preverjanje usposobljenosti iz Požarne varnosti opravljamo v skladu s Pravilnikom o usposabljanju zaposlenih za varstvo pred požarom (Ur.l. RS, št. 32/11 in 61/11 – popr.), v vaših prostorih ali v naši predavalnici, z vašo ali našo avdio-video opremo. Po potrebi lahko za Vas izvedemo tudi praktični prikaz gašenja začetnega požara, vajo evakuacije.
                             <br>Po uspešno opravljenem preverjanju usposobljenosti dobijo udeleženci potrdilo o opravljenem preizkusu znanja iz požarne varnosti.
                             <br>Usposabljamo tudi osebe, odgovorne za gašenje začetnih požarov in izvedbo evakuacije.
                             </p>
                             <br>
                         <!--četrti-->
-                        <li>Izdelava požarnih redov, načrtov evakuacije in požarnih načrtov</li>
-                            <p>Lahko vam izdelamo:
-                            <ul>
-                                <li><p>Požarni red - elaborat z načrtom evakuacije in požarnim načrtom ter vsemi potrebnimi prilogami v skladu s 35. členom Zakona o varstvu pred požarom (ZVPoz-UPB1 - Ur.l. RS, št. 3/07 – uradno prečiščeno besedilo, 9/11, 83/12, 61/17 – GZ, 189/20 – ZFRO in 43/22) in Pravilnikom o požarnem redu (Ur.l. RS, št. 52/07, 34/11 in 101/11),</p></li>
-                                <li><p>izvlečke iz požarnega reda,</p></li>
-                                <li><p>načrte evakuacije,</p></li>
-                                <li><p>požarne načrte.</p></li>
-                            </ul>
+                        <li style="font-size: 1rem;"><u>Izdelava požarnih redov, načrtov evakuacije in požarnih načrtov</u></li>
+                            <p>Lahko vam izdelamo: Požarni red - elaborat z načrtom evakuacije in požarnim načrtom ter vsemi potrebnimi prilogami v skladu s 35. členom Zakona o varstvu pred požarom (ZVPoz-UPB1 - Ur.l. RS, št. 3/07 – uradno prečiščeno besedilo, 9/11, 83/12, 61/17 – GZ, 189/20 – ZFRO in 43/22) in Pravilnikom o požarnem redu (Ur.l. RS, št. 52/07, 34/11 in 101/11), izvlečke iz požarnega reda, načrte evakuacije, požarne načrte. 
                             <p>Izvlečke iz požarnega reda, znake za alarmiranje in požarne načrte primerno uokvirimo ali plastificiramo v želenem formatu in namestimo na mesto nahajanja. Izdelamo vam tudi vse priloge in izjave, s katerimi morajo biti seznanjeni vaši zaposleni.</p>
                             </p>
                             <br>
                         <!--peti-->
-                        <li>Prodaja gasilnikov in ostale požarnovarnostne opreme</li>
+                        <li style="font-size: 1rem;"><u>Prodaja gasilnikov in ostale požarnovarnostne opreme</u></li>
                             <p>
                             Podjetje Gasilko d.o.o. v Sloveniji ekskluzivno zastopa španskega proizvajalca gasilnikov EXFAEX. Vsi gasilniki imajo opravljen brezplačni prvi pregled z veljavnostno 24 mesecev. Seveda pa vam nudimo tudi vso drugo požarnovarnostno opremo, ki je zastopana v Sloveniji.
                             </p>
                             <br>
                         <!--sesti-->
-                        <li>Nudenje uslug osebe, pooblaščene za izvajanje ukrepov varstva pred požarom</li>
+                        <li style="font-size: 1rem;"><u>Nudenje uslug osebe, pooblaščene za izvajanje ukrepov varstva pred požarom</u></li>
                             <p>
                             Nudimo vam tudi storitev uslug osebe, pooblaščene za izvajanje ukrepov varstva pred požarom (36. člen Zakona o varstvu pred požarom (ZVPoz-UPB1 - Ur.l. RS, št. 3/07 – uradno prečiščeno besedilo, 9/11, 83/12, 61/17 – GZ, 189/20 – ZFRO in 43/22).
                             </p>

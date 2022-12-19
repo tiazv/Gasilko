@@ -60,7 +60,7 @@
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #212529;
+  --bs-body-color: #34373b;
   --bs-body-bg: #fff;
 }
 
@@ -11139,6 +11139,16 @@ footer {
   padding-bottom: 3rem;
 }
 
+header.pup {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-top: calc(8rem + 57px);
+  padding-bottom: 8rem;
+  background: no-repeat center center;
+  background-color: #6c757d;
+  background-size: 60%;
+  background-attachment: scroll;
+}
 header.masthead {
   position: relative;
   margin-bottom: 3rem;

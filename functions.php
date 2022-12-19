@@ -1,5 +1,5 @@
 <?php
-
+//poglej ce si prijavljen
 function check_login($con){
     if(isset($_SESSION['user_id'])){
         $id = $_SESSION['user_id'];
@@ -10,12 +10,11 @@ function check_login($con){
             return $user_data;
         }
     }
-    //redirect to login page
-    header("Location: /phpjeki/prijava.php");
+    header("Location: prijava.php");
     die;
 }
 
-
+//random stevilo za user id
 function random_num($dolzina){
     $text = "";
     if($dolzina < 5){
