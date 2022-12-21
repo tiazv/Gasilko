@@ -1,4 +1,4 @@
-<?php include("index_backend.php") ?>
+<?php include __DIR__ . '../../Server/index_backend.php';?>
 
 <!DOCTYPE html>
 <html lang="sl-SI">

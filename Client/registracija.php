@@ -1,4 +1,5 @@
-<?php include_once("prijava_backend.php") ?>
+
+<?php include __DIR__ . '../../Server/registracija_backend.php';?>
 <!DOCTYPE html>
 <html lang="sl-SI">
 
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Prijava</title>
+  <title>Registracija</title>
   <link rel="icon" type="image/x-icon" href="Slike/logo.png">
   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
@@ -16,7 +17,7 @@
   <link href="styles.css" rel="stylesheet" />
   <style>
     .topmargin {
-      margin-top: 5cm;
+      margin-top: 4cm;
     }
   </style>
 </head>
@@ -36,7 +37,7 @@
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php">Domov</a></li>
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="pozarna_varnost.php">Požarna varnost</a></li>
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="varnost_in_zdravje.php">Varnost in zdravje pri delu</a></li>
-          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="registracija.php">Registracija</a></li>
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="prijava.php">Prijava</a></li>
         </ul>
       </div>
     </div>
@@ -47,10 +48,27 @@
       <div class="col-md-10 col-lg-8 col-xl-7 topmargin">
         <!-- Post preview-->
         <div class="prijava">
-          <h1>Prijava</h1>
+          <h1>Registracija</h1>
         </div>
+        <!-- Divider-->
         <hr class="my-4" />
+
         <form class="mx-1 mx-md-4" method="post">
+
+          <div class="d-flex flex-row align-items-center mb-4">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <input type="text" id="ime" class="form-control" placeholder="ime" name="ime" />
+            </div>
+          </div>
+
+          <div class="d-flex flex-row align-items-center mb-4">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+              <input type="text" id="priimek" class="form-control" placeholder="priimek" name="priimek" />
+            </div>
+          </div>
+
           <div class="d-flex flex-row align-items-center mb-4">
             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
             <div class="form-outline flex-fill mb-0">
@@ -64,20 +82,26 @@
               <input type="password" id="geslo" class="form-control" placeholder="geslo" name="geslo" />
             </div>
           </div>
+          <!--
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="password" id="form3Example4cd" class="form-control" placeholder="ponovite geslo"/>
+                          </div>
+                        </div>-->
 
           <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-            <input type="submit" class="btn btn-primary btn-lg" value="Prijavi se">
+            <input type="submit" class="btn btn-primary btn-lg" value="Registriraj se">
           </div>
 
           <div class="container signin">
-            <p>Še nimate računa? <a href="registracija.php">Registrirajte se</a></p>
+            <p>Že imate račun? <a href="prijava.php">Vpišite se</a></p>
           </div>
-
         </form>
+
       </div>
     </div>
   </div>
-
 
   <div id="fb-root"></div>
   <script>
